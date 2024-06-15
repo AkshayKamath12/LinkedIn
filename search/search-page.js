@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
         table.clear().draw();
         jobs.forEach(function (job) {
             table.row.add([job]).draw();
-        }
+        });
       }
     });
   }

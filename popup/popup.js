@@ -16,16 +16,3 @@ document
     chrome.tabs.create({ url: pageURL });
   });
 
-chrome.storage.local.get("jobs", function (result) {
-  const jobs = result.jobs || [];
-  const jobsCount = jobs.length;
-  document.getElementById("searchCount").innerText = "(" + jobsCount + ")";
-});
-
-chrome.storage.onChanged.addListener(function (changes, namespace) {
-  if (namespace === "local" && changes.jobs) {
-    const newJobs = changes.jobs.newValue || [];
-    const jobsCount = newJobs.length;
-    document.getElementById("searchCount").innerText = "(" + jobsCount + ")";
-  }
-});

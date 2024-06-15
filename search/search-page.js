@@ -21,34 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function loadJobsTable() {
     chrome.storage.local.get("jobs", function (result) {
-      const jobs = result.jobs;
+      const job = result.jobs;
 
-      console.log(jobs);
-
-      if (jobs && jobs.length > 0) {
-        // Clear existing table rows
+      if (job) {
         const tableBody = document.getElementById("jobsTableBody");
         table.clear().draw();
-
-        // Create table rows from the jobs data
-        jobs.forEach(function (job) {
-          table.row
-            .add([
-              job.jobTitle,
-              job.jobLocation,
-              job.company,
-              job.postedSince,
-              job.numberOfApplicants,
-              `<a href="${job.link}">link</a>`,
-              job.jobDescription,
-            ])
-            .draw();
-        });
-
-        // Update the title with the count of jobs
-        document.getElementById(
-          "pageTitle"
-        ).innerText = `LinkedIn Job (${jobs.length})`;
+        table.row.add([job]).draw();
       }
     });
   }

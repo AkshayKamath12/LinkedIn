@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadJobsTable() {
     chrome.storage.local.get("jobs", function (result) {
       const jobs = result.jobs;
-      
+
       console.log(jobs);
-      
+
       if (jobs) {
         // Clear existing table rows
         const tableBody = document.getElementById("jobsTableBody");
@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Create table rows from the jobs data
         table.row.add([jobs]).draw();
+        });
       }
     });
   }
@@ -41,6 +42,8 @@ document
   .getElementById("clearLocalStorageButton")
   .addEventListener("click", function () {
     chrome.storage.local.remove("jobs", function () {
+      // Handle the removal of "jobs" from chrome.storage.local
+      console.log("Jobs data removed from chrome.storage.local");
       location.reload(); // Reload the page
     });
   });

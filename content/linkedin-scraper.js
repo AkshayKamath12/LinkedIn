@@ -2,6 +2,7 @@ function sendJob(job) {
   chrome.runtime.sendMessage({ action: "job", message: job });
 }
 
+
 async function scrapeJobDetails(card) {
   card.click();
 

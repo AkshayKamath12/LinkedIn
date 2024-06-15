@@ -3,6 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   initializeDataTable();
 
+  chrome.storage.onChanged.addListener(function (changes, namespace) {
+    if (namespace === "local" && changes.jobs) {
+      loadJobsTable();
+    }
+  });
+
   function initializeDataTable() {
     table = $("#jobsTable").DataTable({
       paging: false,

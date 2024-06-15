@@ -14,17 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function loadJobsTable() {
-    /
-    chrome.storage.local.get("jobs", function (result) {
-      const job = result.jobs;
-
-      if (job) {
-        const tableBody = document.getElementById("jobsTableBody");
-        table.clear().draw();
-        table.row.add([job]).draw();
-      }
-    });
-    /
+   
   }
 });
 

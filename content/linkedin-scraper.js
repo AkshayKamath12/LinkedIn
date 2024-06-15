@@ -2,42 +2,6 @@ function sendJob(job) {
   chrome.runtime.sendMessage({ action: "job", message: job });
 }
 
-function sendMessageToPopup(message) {
-  chrome.runtime.sendMessage({ action: "popupMessage", message: message });
-}
-
-/*
-function sendProgressPercentage(progressPercentage) {
-  chrome.runtime.sendMessage({
-    action: "progressPercentage",
-    message: progressPercentage,
-  });
-}
-
-function simulateRealScrollToEnd(element, duration) {
-  const startScrollTop = element.scrollTop;
-  const endScrollTop = element.scrollHeight - element.clientHeight;
-
-  const startTime = performance.now();
-  const endTime = startTime + duration;
-
-  function scrollStep(timestamp) {
-    const currentTime = Math.min(timestamp, endTime);
-    const elapsedTime = currentTime - startTime;
-    const scrollFraction = elapsedTime / duration;
-    const scrollTop =
-      startScrollTop + (endScrollTop - startScrollTop) * scrollFraction;
-
-    element.scrollTop = scrollTop;
-
-    if (currentTime < endTime) {
-      window.requestAnimationFrame(scrollStep);
-    }
-  }
-
-  window.requestAnimationFrame(scrollStep);
-}
-*/
 async function scrapeJobDetails(card) {
   card.click();
 

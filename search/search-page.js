@@ -22,7 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function loadJobsTable() {
     chrome.storage.local.get("jobs", function (result) {
       const jobs = result.jobs;
-
+      
+      console.log(jobs);
+      
       if (jobs) {
         // Clear existing table rows
         const tableBody = document.getElementById("jobsTableBody");

@@ -2,15 +2,10 @@ function sendJob(job) {
   chrome.runtime.sendMessage({ action: "job", message: job });
 }
 
-function sendMessageToPopup(message) {
-  chrome.runtime.sendMessage({ action: "popupMessage", message: message });
-}
-
-
 async function scrapeJobDetails(card) {
   card.click();
 
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 300));
 
   const job = document.querySelector(".job-details-jobs-unified-top-card__job-title").innerText;
 

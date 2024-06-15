@@ -3,12 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   initializeDataTable();
 
-  chrome.storage.onChanged.addListener(function (changes, namespace) {
-    if (namespace === "local" && changes.jobs) {
-      loadJobsTable();
-    }
-  });
-
   function initializeDataTable() {
     table = $("#jobsTable").DataTable({
       paging: false,
@@ -37,7 +31,6 @@ document
   .addEventListener("click", function () {
     chrome.storage.local.remove("jobs", function () {
       // Handle the removal of "jobs" from chrome.storage.local
-      console.log("Jobs data removed from chrome.storage.local");
       location.reload(); // Reload the page
     });
   });

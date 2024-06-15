@@ -1,3 +1,4 @@
+
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   if (message.action === "startScraping") {
     scrapeLinkedInJobs()
@@ -6,4 +7,6 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
         console.error(err);
       });
   }
+
+  return true;
 });

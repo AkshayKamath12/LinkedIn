@@ -1,3 +1,4 @@
+
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   if (message.action === "job") {
     chrome.storage.local.get('jobs', function (result) {

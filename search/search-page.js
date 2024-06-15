@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function loadJobsTable() {
+    /
     chrome.storage.local.get("jobs", function (result) {
       const job = result.jobs;
 
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         table.row.add([job]).draw();
       }
     });
+    /
   }
 });
 

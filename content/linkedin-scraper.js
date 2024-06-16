@@ -26,17 +26,15 @@ function simulateRealScrollToEnd(element, duration) {
   window.requestAnimationFrame(scrollStep);
 }
 
-async function scrapeJobDetails(card) {
+async function scrapeDetails(card) {
   card.click();
 
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  const job = document.querySelector(
-    ".job-details-jobs-unified-top-card__job-title"
-  ).innerText;
+  const name = document.querySelect(".text-heading-xlarge").innerText;
 
 
-  return job;
+  return name;
 }
 
 async function changePage(pageNumber) {
@@ -71,10 +69,7 @@ async function scrapeLinkedInJobs() {
     const cardCount = cards.length;
     console.log(cardCount);
     for (let cardIndex = 0; cardIndex < cardCount; cardIndex++) {
-      page = cards[cardIndex]
-      page.click()
-      const name = document.querySelect(".text-heading-xlarge").innerText;
-      console.log(name);
+      const name = scrapeDetails(cards[cardIndex]);
       sendJob(name);
     }
 

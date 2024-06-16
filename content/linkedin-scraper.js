@@ -61,7 +61,6 @@ async function scrapeLinkedInJobs() {
         )
       : 1;
 
-  sendMessageToPopup(`Page Count: ${pageCount}`);
 
   for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
     const cardsListElement = document.querySelector(

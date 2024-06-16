@@ -46,7 +46,7 @@ async function changePage(pageNumber) {
 
 async function scrapeLinkedInJobs() {
   const connectionsURL = document.getElementById("ember77").href;
-  document.location.href = connectionsURL;
+  window.location.href = connectionsURL;
   const pageCountElements = [
     ...document.querySelectorAll(".artdeco-pagination__indicator"),
   ];
@@ -61,7 +61,7 @@ async function scrapeLinkedInJobs() {
   
   for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
     
-    await scrollProgressively();
+    //await scrollProgressively();
     const cards = document.querySelectorAll(".mn-connection-card__picture");
     const cardCount = cards.length;
     const names = document.getElementsByClassName("mn-connection-card__name t-16 t-black t-bold");

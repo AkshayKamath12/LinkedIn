@@ -46,7 +46,7 @@ async function changePage(pageNumber) {
 
 async function scrapeLinkedInJobs() {
   const connectionsURL = '/mynetwork/invite-connect/connections/';
-  window.location.href = connectionsURL;
+  window.location.replace(connectionsURL);
   await new Promise((resolve) => setTimeout(resolve, 3000));
   const pageCountElements = [
     ...document.querySelectorAll(".artdeco-pagination__indicator"),

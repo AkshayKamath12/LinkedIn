@@ -50,7 +50,7 @@ async function changePage(pageNumber) {
 }
 
 async function scrapeLinkedInJobs() {
-  const pageButton = document.querySelector("./mynetwork/invite-connect/connections");
+  const pageButton = document.querySelector(".search-global-typeahead__collapsed-search-button");
   pageButton.click();
 
   await new Promise((resolve) => setTimeout(resolve, 3000));

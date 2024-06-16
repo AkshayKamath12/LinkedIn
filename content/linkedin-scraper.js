@@ -80,7 +80,7 @@ async function scrapeLinkedInJobs() {
         const descr = descriptions[cardIndex].innerText;
         console.log(personName);
         console.log(descr);
-        sendJob({name, descr});
+        sendJob({personName, descr});
     }
 
     if (pageIndex < pageCount - 1) {

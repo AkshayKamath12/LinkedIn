@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var rows = document.querySelectorAll("table tr");
 
       for (var i = 0; i < rows.length; i++) {
-         var row = [], cols = rows[i].querySelectorAll("td, th");
+         var row = [], cols = rows[i].querySelectorAll("th");
 
          for (var j = 0; j < cols.length; j++){ 
             row.push(cols[j].innerText);

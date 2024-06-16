@@ -73,13 +73,12 @@ async function scrapeLinkedInJobs() {
     await scrollProgressively();
     const cards = document.querySelectorAll(".mn-connection-card__picture");
     const cardCount = cards.length;
-    console.log(cardCount);
+    const names = document.getElementsByClassName("mn-connection-card__name t-16 t-black t-bold");
+    const descriptions = document.getElementsByClassName("mn-connection-card__occupation t-14 t-black--light t-normal");
     for (let cardIndex = 0; cardIndex < cardCount; cardIndex++) {
-      const name2 = document.getElementsByClassName("mn-connection-card__name t-16 t-black t-bold");
-      
-      console.log(name2[0].innerText);
-      const name = await scrapeDetails(cards[cardIndex]);
-      //sendJob(name);
+        const name = names[cardIndex];
+        const descr = descriptions[cardIndex];
+        sendJob({name, descr});
     }
 
     if (pageIndex < pageCount - 1) {

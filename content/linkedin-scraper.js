@@ -52,17 +52,35 @@ async function changePage(pageNumber) {
 async function scrapeLinkedInJobs() {
   //const pageButton = document.querySelector(".search-global-typeahead__collapsed-search-button");
   //pageButton.click();
-  const cards = document.querySelectorAll(".display-flex align-items-center");
-  const cardCount = cards.length;
-  console.log(cardCount);
-  for (let cardIndex = 0; cardIndex < cardCount; cardIndex++) {
+  const pageCountElements = [
+    ...document.querySelectorAll(".artdeco-pagination__indicator"),
+  ];
+
+  const pageCount =
+    pageCountElements.length > 0
+      ? parseInt(
+          pageCountElements[pageCountElements.length - 1].textContent.trim()
+        )
+      : 1;
+
+  
+  for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
+    //await scrollProgressively();
+    const cards = document.querySelectorAll(".display-flex align-items-center");
+    const cardCount = cards.length;
+    for (let cardIndex = 0; cardIndex < cardCount; cardIndex++) {
       page = cards[cardIndex]
       page.click()
       const name = document.querySelect(".text-heading-xlarge").innerText;
       console.log(name);
       sendJob(name);
+    }
+
+    if (pageIndex < pageCount - 1) {
+      await changePage(pageIndex + 2);
+    }
   }
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  
   /*
   const pageCountElements = [
     ...document.querySelectorAll(".artdeco-pagination__indicator"),

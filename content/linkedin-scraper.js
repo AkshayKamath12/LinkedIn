@@ -27,11 +27,9 @@ function simulateRealScrollToEnd(element, duration) {
 }
 
 async function scrapeDetails(card) {
-  card.click();
   await new Promise((resolve) => setTimeout(resolve, 1000));
-  
-  let name2 = "";
-  return name2;
+  let name2 = card.getElementsByClassName("mn-connection-card__name t-16 t-black t-bold")[0];
+  return name2.innerText;
 /*
   await new Promise((resolve) => setTimeout(resolve, 1000));
 

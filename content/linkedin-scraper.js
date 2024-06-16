@@ -67,7 +67,7 @@ async function scrapeLinkedInJobs() {
       ".jobs-search-results-list"
     );
     await scrollProgressively();
-    const cards = document.querySelectorAll(".job-card-container");
+    const cards = document.querySelectorAll(".job-card-container--clickable");
     const cardCount = cards.length;
     for (let cardIndex = 0; cardIndex < cardCount; cardIndex++) {
       const jobDetails = await scrapeJobDetails(cards[cardIndex]);

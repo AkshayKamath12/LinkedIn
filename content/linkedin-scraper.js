@@ -64,6 +64,7 @@ async function scrapeLinkedInJobs() {
     //await scrollProgressively();
     const cards = document.querySelectorAll(".mn-connection-card__picture");
     const cardCount = cards.length;
+    console.log(cardCount);
     const names = document.getElementsByClassName("mn-connection-card__name t-16 t-black t-bold");
     const descriptions = document.getElementsByClassName("mn-connection-card__occupation t-14 t-black--light t-normal");
     for (let cardIndex = 0; cardIndex < cardCount; cardIndex++) {

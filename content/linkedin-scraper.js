@@ -27,8 +27,9 @@ function simulateRealScrollToEnd(element, duration) {
 }
 
 async function scrapeDetails(card) {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
   card.click();
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  
   let name2 = "";
   return name2;
 /*

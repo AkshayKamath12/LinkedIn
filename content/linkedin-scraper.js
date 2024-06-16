@@ -50,6 +50,11 @@ async function changePage(pageNumber) {
 }
 
 async function scrapeLinkedInJobs() {
+  const pageButton = document.querySelector("./mynetwork/invite-connect/connections");
+  pageButton.click();
+
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  /*
   const pageCountElements = [
     ...document.querySelectorAll(".artdeco-pagination__indicator"),
   ];
@@ -61,7 +66,7 @@ async function scrapeLinkedInJobs() {
         )
       : 1;
 
-
+    
   for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
     const cardsListElement = document.querySelector(
       ".jobs-search-results-list"
@@ -79,6 +84,7 @@ async function scrapeLinkedInJobs() {
       await changePage(pageIndex + 2);
     }
   }
+  */
 }
 
 function scrollProgressively() {

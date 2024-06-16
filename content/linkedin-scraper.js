@@ -63,7 +63,7 @@ async function scrapeLinkedInJobs() {
         )
       : 1;
 
-  
+  console.log("testing");
   for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
     //await scrollProgressively();
     const cards = document.querySelectorAll(".display-flex align-items-center");

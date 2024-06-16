@@ -43,9 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
          for (var j = 0; j < cols.length; j++){ 
             row.push(cols[j].innerText);
-
+         }
             csv.push(row.join(","));      
-         }  
       }
 
                 // Download CSV file

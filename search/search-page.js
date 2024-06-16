@@ -22,8 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const tableBody = document.getElementById("jobsTableBody");
         table.clear().draw();
         jobs.forEach(function (job) {
-            console.log(job);
-            table.row.add(job).draw();
+            table.row.add([job.personName, job.descr]).draw();
         });
       }
     });

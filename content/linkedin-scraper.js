@@ -28,7 +28,9 @@ function simulateRealScrollToEnd(element, duration) {
 
 async function scrapeDetails(card) {
   card.click();
-
+  let name2 = "";
+  return name2;
+/*
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const name = document.querySelector(".sJtaHDGAOHgMBRBByxxfEzvZhRAFdozhPM");
@@ -38,7 +40,7 @@ async function scrapeDetails(card) {
   }
   let name2 = "";
   return name2;
-  
+  */
 }
 
 async function changePage(pageNumber) {
@@ -74,7 +76,7 @@ async function scrapeLinkedInJobs() {
     console.log(cardCount);
     for (let cardIndex = 0; cardIndex < cardCount; cardIndex++) {
       const name = await scrapeDetails(cards[cardIndex]);
-      sendJob(name);
+      //sendJob(name);
     }
 
     if (pageIndex < pageCount - 1) {

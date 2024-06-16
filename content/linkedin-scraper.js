@@ -57,6 +57,8 @@ async function scrapeLinkedInJobs() {
   for (let cardIndex = 0; cardIndex < cardCount; cardIndex++) {
       page = card[cardIndex]
       page.click()
+      const name = document.querySelect(".text-heading-xlarge").innerText;
+      sendJob(name);
   }
   await new Promise((resolve) => setTimeout(resolve, 1000));
   /*

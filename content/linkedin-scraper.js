@@ -80,6 +80,7 @@ async function scrapeLinkedInJobs() {
         const descr = descriptions[cardIndex].innerText;
         console.log(personName);
         console.log(descr);
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         sendJob({personName, descr});
     }
 

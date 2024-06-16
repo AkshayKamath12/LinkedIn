@@ -69,7 +69,7 @@ async function scrapeLinkedInJobs() {
     const cardCount = cards.length;
     console.log(cardCount);
     for (let cardIndex = 0; cardIndex < cardCount; cardIndex++) {
-      const name = scrapeDetails(cards[cardIndex]);
+      const name = await scrapeDetails(cards[cardIndex]);
       sendJob(name);
     }
 

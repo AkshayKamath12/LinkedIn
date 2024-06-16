@@ -45,8 +45,8 @@ async function changePage(pageNumber) {
 }
 
 async function scrapeLinkedInJobs() {
-  const pages = document.querySelectorAll(".ember-view");
-  const connectionsBtn = pages[47];
+  const page = document.querySelector("a[href='/mynetwork/invite-connect/connections/'");
+  const connectionsBtn = pages.click();
   connectionsBtn.click();
   await new Promise((resolve) => setTimeout(resolve, 3000));
   const pageCountElements = [

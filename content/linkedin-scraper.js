@@ -45,7 +45,7 @@ async function changePage(pageNumber) {
 }
 
 async function scrapeLinkedInJobs() {
-  const connectionsURL = document.getElementByID("ember199").href;
+  const connectionsURL = document.getElementById("ember199").href;
   windows.location.href = connectionsURL;
   const pageCountElements = [
     ...document.querySelectorAll(".artdeco-pagination__indicator"),

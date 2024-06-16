@@ -76,8 +76,10 @@ async function scrapeLinkedInJobs() {
     const names = document.getElementsByClassName("mn-connection-card__name t-16 t-black t-bold");
     const descriptions = document.getElementsByClassName("mn-connection-card__occupation t-14 t-black--light t-normal");
     for (let cardIndex = 0; cardIndex < cardCount; cardIndex++) {
-        const name = names[cardIndex];
-        const descr = descriptions[cardIndex];
+        const name = names[cardIndex].innerText;
+        const descr = descriptions[cardIndex].innerText;
+        console.log(name);
+        console.log(descr);
         sendJob({name, descr});
     }
 

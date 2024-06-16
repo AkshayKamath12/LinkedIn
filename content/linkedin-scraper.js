@@ -31,10 +31,14 @@ async function scrapeDetails(card) {
 
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  const name = document.querySelector(".sJtaHDGAOHgMBRBByxxfEzvZhRAFdozhPM").innerText;
-
-
-  return name;
+  const name = document.querySelector(".sJtaHDGAOHgMBRBByxxfEzvZhRAFdozhPM");
+  
+  if(name){
+     return name.innerText; 
+  }
+  let name2 = "";
+  return name2;
+  
 }
 
 async function changePage(pageNumber) {

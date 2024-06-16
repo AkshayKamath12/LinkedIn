@@ -50,10 +50,15 @@ async function changePage(pageNumber) {
 }
 
 async function scrapeLinkedInJobs() {
-  const pageButton = document.querySelector(".search-global-typeahead__collapsed-search-button");
-  pageButton.click();
-
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  //const pageButton = document.querySelector(".search-global-typeahead__collapsed-search-button");
+  //pageButton.click();
+  const cards = document.querySelectorAll(".display-flex align-items-center");
+  const cardCount = cards.length;
+  for (let cardIndex = 0; cardIndex < cardCount; cardIndex++) {
+      page = card[cardIndex]
+      page.click()
+  }
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   /*
   const pageCountElements = [
     ...document.querySelectorAll(".artdeco-pagination__indicator"),

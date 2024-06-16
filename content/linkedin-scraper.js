@@ -33,22 +33,6 @@ function simulateRealScrollToEnd(element, duration) {
   window.requestAnimationFrame(scrollStep);
 }
 
-async function scrapeDetails(card) {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  let name2 = document.getElementsByClassName("mn-connection-card__name t-16 t-black t-bold")[0];
-  return name2.innerText;
-/*
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  const name = document.querySelector(".sJtaHDGAOHgMBRBByxxfEzvZhRAFdozhPM");
-  
-  if(name){
-     return name.innerText; 
-  }
-  let name2 = "";
-  return name2;
-  */
-}
 
 async function changePage(pageNumber) {
   // click button
@@ -61,8 +45,8 @@ async function changePage(pageNumber) {
 }
 
 async function scrapeLinkedInJobs() {
-  //const pageButton = document.querySelector(".search-global-typeahead__collapsed-search-button");
-  //pageButton.click();
+  const connectionsURL = document.getElementByID("ember199").href;
+  windows.location.href = connectionsURL;
   const pageCountElements = [
     ...document.querySelectorAll(".artdeco-pagination__indicator"),
   ];

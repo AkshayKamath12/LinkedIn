@@ -1,4 +1,4 @@
-function send(person) {
+function sendPerson(person) {
   chrome.runtime.sendMessage({ action: "person", message: person });
 }
 

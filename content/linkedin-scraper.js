@@ -71,7 +71,7 @@ async function scrapeLinkedInJobs() {
   
   for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
     
-    //await scrollProgressively();
+    await scrollProgressively();
     const cards = document.querySelectorAll(".mn-connection-card__picture");
     const cardCount = cards.length;
     console.log(cardCount);
@@ -121,12 +121,12 @@ async function scrapeLinkedInJobs() {
 function scrollProgressively() {
   const timeToCall = 2000;
   return new Promise((res) => {
-    const jobs = document.querySelectorAll(".job-card-container");
-    const jobsCount = jobs.length;
-    jobs[jobsCount - 1].scrollIntoView({ behaviour: "smooth" });
+    const people = document.querySelectorAll(".mn-connection-card__picture");
+    const peopleCount = people.length;
+    people[peopleCount - 1].scrollIntoView({ behaviour: "smooth" });
     setTimeout(async () => {
       if (
-        document.querySelectorAll(".job-card-container").length != jobsCount
+        document.querySelectorAll(".mn-connection-card__picture").length != peopleCount
       ) {
         res(scrollProgressively());
       } else {

@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
   initializeDataTable();
 
   chrome.storage.onChanged.addListener(function (changes, namespace) {
-    if (namespace === "local" && changes.jobs) {
-      loadJobsTable();
+    if (namespace === "local" && changes.people) {
+      loadTable();
     }
   });
 
@@ -16,30 +16,74 @@ document.addEventListener("DOMContentLoaded", function () {
       info: true,
     });
 
-    loadJobsTable();
+    loadTable();
   }
 
-  function loadJobsTable() {
+  function loadTable() {
     
-    chrome.storage.local.get("jobs", function (result) {
-      const jobs = result.jobs;
+    chrome.storage.local.get("people", function (result) {
+      const people = result.people;
 
-      if (jobs && jobs.length > 0) {
+      if (people && people.length > 0) {
         const tableBody = document.getElementById("jobsTableBody");
         table.clear().draw();
-        jobs.forEach(function (job) {
-            table.row.add([job.personName, job.descr]).draw();
+        people.forEach(function (person) {
+            table.row.add([person.personName, person.descr]).draw();
         });
       }
     });
   }
 });
+   function tableToCSV() {
+      var csv = [];
+      var rows = document.querySelectorAll("table tr");
 
+      for (var i = 0; i < rows.length; i++) {
+         var row = [], cols = rows[i].querySelectorAll("td, th");
+
+         for (var j = 0; j < cols.length; j++){ 
+            row.push(cols[j].innerText);
+
+            csv.push(row.join(","));      
+         }  
+      }
+
+                // Download CSV file
+      downloadCSV(csv.join("\n"), "result");
+ 
+   }
+ 
+   function downloadCSV(csv, filename) {
+ 
+      var csvFile;
+      var csvFile;
+      var downloadLink;
+
+      csvFile = new Blob([csv], {
+         type: "text/csv"
+      });
+
+      downloadLink = document.createElement("a");
+      downloadLink.download = filename;
+      downloadLink.href = window.URL.createObjectURL(csvFile);
+
+      downloadLink.style.display = "none";
+
+      document.body.appendChild(downloadLink);
+
+      downloadLink.click();
+   }
+       
 document
   .getElementById("clearLocalStorageButton")
   .addEventListener("click", function () {
-    chrome.storage.local.remove("jobs", function () {
-      // Handle the removal of "jobs" from chrome.storage.local
+    chrome.storage.local.remove("people", function () {
       location.reload(); // Reload the page
     });
+  });
+  
+document
+  .getElementById("downloadCSV")
+  .addEventListener("click", function () {
+    tableToCSV();
   });

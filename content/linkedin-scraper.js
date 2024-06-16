@@ -1,5 +1,5 @@
-function sendJob(job) {
-  chrome.runtime.sendMessage({ action: "job", message: job });
+function send(person) {
+  chrome.runtime.sendMessage({ action: "person", message: person });
 }
 
 function sendProgressPercentage(progressPercentage) {
@@ -44,7 +44,7 @@ async function changePage(pageNumber) {
   await new Promise((resolve) => setTimeout(resolve, 3000));
 }
 
-async function scrapeLinkedInJobs() {
+async function scrapeLinkedIn() {
   const page = document.querySelector("a[href='/mynetwork/invite-connect/connections/'");
   const connectionsBtn = page.click();
   await new Promise((resolve) => setTimeout(resolve, 3000));
@@ -74,7 +74,7 @@ async function scrapeLinkedInJobs() {
         console.log(personName);
         console.log(descr);
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        sendJob({personName, descr});
+        sendPerson({personName, descr});
         const cardProgressPercentage = Math.round(((cardIndex + 1) / cardCount) * 100);
         const pageProgressPercentage = Math.round((pageIndex / pageCount) * 100);
         const overallProgressPercentage = Math.round(
@@ -87,37 +87,7 @@ async function scrapeLinkedInJobs() {
     }
   }
   
-  /*
-  const pageCountElements = [
-    ...document.querySelectorAll(".artdeco-pagination__indicator"),
-  ];
 
-  const pageCount =
-    pageCountElements.length > 0
-      ? parseInt(
-          pageCountElements[pageCountElements.length - 1].textContent.trim()
-        )
-      : 1;
-
-    
-  for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
-    const cardsListElement = document.querySelector(
-      ".jobs-search-results-list"
-    );
-    await scrollProgressively();
-    const cards = document.querySelectorAll(".job-card-container--clickable");
-    const cardCount = cards.length;
-    for (let cardIndex = 0; cardIndex < cardCount; cardIndex++) {
-      const jobDetails = await scrapeJobDetails(cards[cardIndex]);
-
-      sendJob(jobDetails);
-    }
-
-    if (pageIndex < pageCount - 1) {
-      await changePage(pageIndex + 2);
-    }
-  }
-  */
 }
 
 function scrollProgressively() {

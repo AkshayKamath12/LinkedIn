@@ -31,7 +31,7 @@ async function scrapeDetails(card) {
 
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  const name = document.querySelect(".text-heading-xlarge").innerText;
+  const name = document.querySelector(".text-heading-xlarge inline t-24 v-align-middle break-words").innerText;
 
 
   return name;

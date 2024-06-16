@@ -2,6 +2,13 @@ function sendJob(job) {
   chrome.runtime.sendMessage({ action: "job", message: job });
 }
 
+function sendProgressPercentage(progressPercentage) {
+  chrome.runtime.sendMessage({
+    action: "progressPercentage",
+    message: progressPercentage,
+  });
+}
+
 function simulateRealScrollToEnd(element, duration) {
   const startScrollTop = element.scrollTop;
   const endScrollTop = element.scrollHeight - element.clientHeight;
@@ -82,6 +89,11 @@ async function scrapeLinkedInJobs() {
         console.log(descr);
         await new Promise((resolve) => setTimeout(resolve, 1000));
         sendJob({personName, descr});
+        const cardProgressPercentage = Math.round(((cardIndex + 1) / cardCount) * 100);
+        const pageProgressPercentage = Math.round((pageIndex / pageCount) * 100);
+        const overallProgressPercentage = Math.round(
+        pageProgressPercentage + cardProgressPercentage / pageCount);
+        sendProgressPercentage(overallProgressPercentage);
     }
 
     if (pageIndex < pageCount - 1) {

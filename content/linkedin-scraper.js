@@ -65,10 +65,11 @@ async function scrapeLinkedInJobs() {
 
   
   for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
-    console.log(pageIndex);
+    
     //await scrollProgressively();
     const cards = document.querySelectorAll(".display-flex align-items-center");
     const cardCount = cards.length;
+    console.log(cardCount);
     for (let cardIndex = 0; cardIndex < cardCount; cardIndex++) {
       page = cards[cardIndex]
       page.click()

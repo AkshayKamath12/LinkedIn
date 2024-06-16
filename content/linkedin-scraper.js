@@ -62,7 +62,7 @@ async function scrapeLinkedInJobs() {
   
   for (let pageIndex = 0; pageIndex < pageCount; pageIndex++) {
     
-    //await scrollProgressively();
+    await scrollProgressively();
     const cards = document.querySelectorAll(".mn-connection-card__picture");
     const cardCount = cards.length;
     console.log(cardCount);

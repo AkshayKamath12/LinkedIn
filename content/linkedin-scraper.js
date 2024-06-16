@@ -46,7 +46,7 @@ async function changePage(pageNumber) {
 
 async function scrapeLinkedInJobs() {
   const page = document.querySelector("a[href='/mynetwork/invite-connect/connections/'");
-  const connectionsBtn = pages.click();
+  const connectionsBtn = page.click();
   connectionsBtn.click();
   await new Promise((resolve) => setTimeout(resolve, 3000));
   const pageCountElements = [
